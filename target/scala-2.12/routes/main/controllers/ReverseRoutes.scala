@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/bartosz/IdeaProjects/play-scala-starter-example/conf/routes
-// @DATE:Wed Oct 17 09:16:16 CEST 2018
+// @SOURCE:/home/bartosz/IdeaProjects/Calc/conf/routes
+// @DATE:Wed Oct 17 19:49:13 CEST 2018
 
 import play.api.mvc.Call
 

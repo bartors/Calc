@@ -7,6 +7,10 @@ import javax.inject._
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.immutable.List
 
+import play.api.Logger
+
+
+
 
 
 @Singleton
@@ -14,7 +18,7 @@ class Calc {
 
 
   def run(s:String):Double= {
-compute(shaunting(tokenize(lexemize(s))))
+    compute(shaunting(tokenize(lexemize(s))))
 
   }
 
@@ -57,6 +61,22 @@ compute(shaunting(tokenize(lexemize(s))))
           arrayBuffer+="+"
           start=i+1
         }
+        case '('=>{
+          val sub=s.substring(start,i)
+          if(sub.nonEmpty){
+            arrayBuffer+=sub
+          }
+          arrayBuffer+="("
+          start=i+1
+        }
+        case ')'=>{
+          val sub=s.substring(start,i)
+          if(sub.nonEmpty){
+            arrayBuffer+=sub
+          }
+          arrayBuffer+=")"
+          start=i+1
+        }
         case _ =>
       }
       }
@@ -82,7 +102,9 @@ compute(shaunting(tokenize(lexemize(s))))
        case ":" => array+=Operator('/',3)
        case "-" => array+=Operator('-',2)
        case "+" => array+=Operator('+',2)
-       case _ => throw new IllegalArgumentException("Your input must consists of numbers and '+','-','/','*'")
+       case "(" => array+=Operator('l',0)
+       case ")" => array+=Operator('r',0)
+       case _ => throw new IllegalArgumentException("Your input must consists of numbers and '+','-','/','*','(',')'")
      }
    }
  }
@@ -138,15 +160,32 @@ compute(shaunting(tokenize(lexemize(s))))
         output=x::output
       }else{
         val operator=x.asInstanceOf[Operator]
-        while(operators.nonEmpty&&(operators.head.pres>operator.pres || operators.head.pres==operator.pres)){
-          output=operators.head::output
+        if(!operator.pres.equals(0)) {
+          while (operators.nonEmpty && (operators.head.pres > operator.pres || operators.head.pres == operator.pres)) {
+            output = operators.head :: output
+            operators = operators.tail
+          }
+          operators = operator :: operators
+        }else if(operator.operator.equals('l')){
+          operators=operator::operators
+        }else if(operator.operator.equals('r')){
+          Logger.debug(operators.toString())
+          while(!operators.head.operator.equals('l')){
+            output = operators.head :: output
+            operators = operators.tail
+            if(operators.isEmpty){
+              throw new IllegalArgumentException("Parentheses are mismatched")
+            }
+          }
           operators=operators.tail
-        }
-        operators=operator::operators
 
+        }
       }
     }
     while(operators.nonEmpty){
+      if(operators.head.operator.equals('l')){
+        throw new IllegalArgumentException("Parentheses are mismatched")
+      }
       output=operators.head::output
       operators=operators.tail
     }
@@ -157,4 +196,5 @@ compute(shaunting(tokenize(lexemize(s))))
 
 }
 case class Operator(operator:Char, pres:Int)
+
 
