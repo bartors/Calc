@@ -1,0 +1,18 @@
+@(message:String)(implicit assetsFinder: AssetsFinder)
+
+<html>
+    <head>
+        <title>Calculator</title>
+        <script type="text/javascript" src='@routes.Assets.versioned("javascripts/calc.js")'></script>
+
+    </head>
+<body>
+<h1>@message</h1>
+<form action ="/calculator/">
+    Write your calculation in here:<br>
+    <input  id="calc" type=" text" name="calc"><br>
+    <input type="button" onclick="calculate('calc' )" value="Calculate">
+
+</form>
+</body>
+</html>

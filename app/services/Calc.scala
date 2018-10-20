@@ -37,6 +37,15 @@ class Calc {
           arrayBuffer+=":"
           start=i+1
         }
+        case '/'=>{
+          val sub=s.substring(start,i)
+          if(sub.nonEmpty){
+            arrayBuffer+=sub
+          }
+
+          arrayBuffer+=":"
+          start=i+1
+        }
         case '*'=>{
           val sub=s.substring(start,i)
           if(sub.nonEmpty){
@@ -100,6 +109,7 @@ class Calc {
      x match {
        case "*" => array+=Operator('*',3)
        case ":" => array+=Operator('/',3)
+       case "/" => array+=Operator('/',3)
        case "-" => array+=Operator('-',2)
        case "+" => array+=Operator('+',2)
        case "(" => array+=Operator('l',0)
