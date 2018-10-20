@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bartosz/IdeaProjects/Calc/conf/routes
-// @DATE:Sat Oct 20 11:12:22 CEST 2018
+// @DATE:Sat Oct 20 18:04:43 CEST 2018
 
 package router
 
@@ -56,6 +56,10 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(file:String)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """calculator""", """controllers.CalculatorController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """calculator/""" + "$" + """s<[^/]+>""", """controllers.CalculatorController.calculator(s:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """operation""", """controllers.CalculatorController.operation()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """result""", """controllers.CalculatorController.result()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """reset""", """controllers.CalculatorController.reset()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """clear""", """controllers.CalculatorController.clear()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -171,6 +175,78 @@ class Routes(
     )
   )
 
+  // @LINE:21
+  private[this] lazy val controllers_CalculatorController_operation6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("operation")))
+  )
+  private[this] lazy val controllers_CalculatorController_operation6_invoker = createInvoker(
+    CalculatorController_0.operation(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.CalculatorController",
+      "operation",
+      Nil,
+      "GET",
+      this.prefix + """operation""",
+      """ Get operations history from calculator""",
+      Seq()
+    )
+  )
+
+  // @LINE:23
+  private[this] lazy val controllers_CalculatorController_result7_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("result")))
+  )
+  private[this] lazy val controllers_CalculatorController_result7_invoker = createInvoker(
+    CalculatorController_0.result(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.CalculatorController",
+      "result",
+      Nil,
+      "GET",
+      this.prefix + """result""",
+      """ Get operations history from calculator""",
+      Seq()
+    )
+  )
+
+  // @LINE:25
+  private[this] lazy val controllers_CalculatorController_reset8_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("reset")))
+  )
+  private[this] lazy val controllers_CalculatorController_reset8_invoker = createInvoker(
+    CalculatorController_0.reset(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.CalculatorController",
+      "reset",
+      Nil,
+      "GET",
+      this.prefix + """reset""",
+      """ Get operations history from calculator""",
+      Seq()
+    )
+  )
+
+  // @LINE:27
+  private[this] lazy val controllers_CalculatorController_clear9_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("clear")))
+  )
+  private[this] lazy val controllers_CalculatorController_clear9_invoker = createInvoker(
+    CalculatorController_0.clear(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.CalculatorController",
+      "clear",
+      Nil,
+      "GET",
+      this.prefix + """clear""",
+      """ Clear memory in calc""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -208,6 +284,30 @@ class Routes(
     case controllers_CalculatorController_calculator5_route(params@_) =>
       call(params.fromPath[String]("s", None)) { (s) =>
         controllers_CalculatorController_calculator5_invoker.call(CalculatorController_0.calculator(s))
+      }
+  
+    // @LINE:21
+    case controllers_CalculatorController_operation6_route(params@_) =>
+      call { 
+        controllers_CalculatorController_operation6_invoker.call(CalculatorController_0.operation())
+      }
+  
+    // @LINE:23
+    case controllers_CalculatorController_result7_route(params@_) =>
+      call { 
+        controllers_CalculatorController_result7_invoker.call(CalculatorController_0.result())
+      }
+  
+    // @LINE:25
+    case controllers_CalculatorController_reset8_route(params@_) =>
+      call { 
+        controllers_CalculatorController_reset8_invoker.call(CalculatorController_0.reset())
+      }
+  
+    // @LINE:27
+    case controllers_CalculatorController_clear9_route(params@_) =>
+      call { 
+        controllers_CalculatorController_clear9_invoker.call(CalculatorController_0.clear())
       }
   }
 }

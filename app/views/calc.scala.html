@@ -10,8 +10,13 @@
 <h1>@message</h1>
 <form action ="/calculator/">
     Write your calculation in here:<br>
-    <input  id="calc" type=" text" name="calc"><br>
-    <input type="button" onclick="calculate('calc' )" value="Calculate">
+        <input  id="calc" type=" text" name="calc"><br>
+        <input type="button" onclick="calculate('calc' )" value="Calculate"><br>
+        <input type="button" onclick="previousOpration()" value="Prevoius calcs">
+        <input type="button" onclick="previousResult()" value="Prevoius result"><br>
+        <input type="button" onclick="resetPrevious()" value="Reset">
+        <input type="button" onclick="clearMemory()" value="CM">
+
 
 </form>
 </body>

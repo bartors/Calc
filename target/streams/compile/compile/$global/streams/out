@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/bartosz/IdeaProjects/Calc/app/views/calc.scala.html:7:60: value at is not a member of controllers.ReverseAssets[0m
-[0m[[0m[31merror[0m] [0m[0m        <script type="text/javascript" src='@routes.Assets.at("javascripts/calc.js")'></script>[0m
-[0m[[0m[31merror[0m] [0m[0m                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/bartosz/IdeaProjects/Calc/app/controllers/CalculatorController.scala:31:7: Cannot write an instance of Unit to HTTP response. Try to define a Writeable[Unit][0m
+[0m[[0m[31merror[0m] [0m[0m    Ok(calc.reset())[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

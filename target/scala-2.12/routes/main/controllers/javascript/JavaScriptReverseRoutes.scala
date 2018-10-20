@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bartosz/IdeaProjects/Calc/conf/routes
-// @DATE:Sat Oct 20 11:12:22 CEST 2018
+// @DATE:Sat Oct 20 18:04:43 CEST 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -98,6 +98,16 @@ package controllers.javascript {
     }
 
   
+    // @LINE:23
+    def result: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.CalculatorController.result",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "result"})
+        }
+      """
+    )
+  
     // @LINE:18
     def calculator: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.CalculatorController.calculator",
@@ -108,12 +118,42 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:21
+    def operation: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.CalculatorController.operation",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "operation"})
+        }
+      """
+    )
+  
+    // @LINE:25
+    def reset: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.CalculatorController.reset",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "reset"})
+        }
+      """
+    )
+  
     // @LINE:16
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.CalculatorController.index",
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "calculator"})
+        }
+      """
+    )
+  
+    // @LINE:27
+    def clear: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.CalculatorController.clear",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "clear"})
         }
       """
     )

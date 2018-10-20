@@ -21,5 +21,17 @@ class CalculatorController @Inject()(cc: ControllerComponents, calc : Calc) (imp
   def calculator(s:String)= Action{
     Ok(calc.run(s).toString)
   }
+  def operation()=Action{
+    Ok(calc.getOperation())
+  }
+  def result()=Action{
+    Ok(calc.getResult())
+  }
+  def reset()=Action{
+    Ok(calc.reset())
+  }
+  def clear()=Action{
+    Ok(calc.clearMemory())
+  }
 
 }

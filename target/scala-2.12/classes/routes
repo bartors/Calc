@@ -16,3 +16,12 @@ GET     /assets/*file               controllers.Assets.versioned(file)
 GET     /calculator                 controllers.CalculatorController.index
 # Get input for the calculator
 GET /calculator/:s                  controllers.CalculatorController.calculator(s:String)
+
+# Get operations history from calculator
+GET /operation                 controllers.CalculatorController.operation()
+# Get operations history from calculator
+GET /result                controllers.CalculatorController.result()
+# Get operations history from calculator
+GET /reset                controllers.CalculatorController.reset()
+# Clear memory in calc
+GET /clear              controllers.CalculatorController.clear()

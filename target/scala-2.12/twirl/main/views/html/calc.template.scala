@@ -34,8 +34,13 @@ Seq[Any](format.raw/*2.1*/("""
 <h1>"""),_display_(/*10.6*/message),format.raw/*10.13*/("""</h1>
 <form action ="/calculator/">
     Write your calculation in here:<br>
-    <input  id="calc" type=" text" name="calc"><br>
-    <input type="button" onclick="calculate('calc' )" value="Calculate">
+        <input  id="calc" type=" text" name="calc"><br>
+        <input type="button" onclick="calculate('calc' )" value="Calculate"><br>
+        <input type="button" onclick="previousOpration()" value="Prevoius calcs">
+        <input type="button" onclick="previousResult()" value="Prevoius result"><br>
+        <input type="button" onclick="resetPrevious()" value="Reset">
+        <input type="button" onclick="clearMemory()" value="CM">
+
 
 </form>
 </body>
@@ -55,9 +60,9 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Sat Oct 20 11:45:35 CEST 2018
+                  DATE: Sat Oct 20 18:12:48 CEST 2018
                   SOURCE: /home/bartosz/IdeaProjects/Calc/app/views/calc.scala.html
-                  HASH: fe837ae8d25e7b51935780a2c806b06b7203a61b
+                  HASH: 804e506e942f71511cf6481c37881bca9d21019c
                   MATRIX: 741->1|888->55|915->56|1038->153|1052->159|1112->199|1175->236|1203->243
                   LINES: 21->1|26->2|27->3|30->6|30->6|30->6|34->10|34->10
                   -- GENERATED --

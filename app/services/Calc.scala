@@ -15,11 +15,53 @@ import play.api.Logger
 
 @Singleton
 class Calc {
+  val operations = new ArrayBuffer[String]()
+  val results = new ArrayBuffer[String]()
+  var res=0
+  var calc=0
 
 
   def run(s:String):Double= {
-    compute(shaunting(tokenize(lexemize(s))))
+    operations+= s
+    val res =compute(shaunting(tokenize(lexemize(s))))
+    results += res.toString
+    return res
 
+  }
+  def getOperation(): String = {
+    if (operations.isEmpty) {
+        "No calculations in memory"
+    } else {
+    if (calc >= operations.length) {
+      operations.head
+    } else {
+      calc+=1
+      operations(operations.length - calc)
+    }
+  }
+  }
+  def getResult(): String = {
+    if (results.isEmpty) {
+      "No calculations in memory"
+    } else {
+      if (res >= results.length) {
+        results.head
+      } else {
+        res+=1
+        results(results.length - res)
+      }
+    }
+  }
+
+  def reset():String={
+    calc=0
+    res=0
+    return "Done reseting"
+  }
+  def clearMemory():String={
+    operations.clear()
+    results.clear()
+    "Memory clear"
   }
 
   def lexemize(s:String):ArrayBuffer[String]={

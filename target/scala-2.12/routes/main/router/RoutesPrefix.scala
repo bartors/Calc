@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bartosz/IdeaProjects/Calc/conf/routes
-// @DATE:Sat Oct 20 11:12:22 CEST 2018
+// @DATE:Sat Oct 20 18:04:43 CEST 2018
 
 
 package router {

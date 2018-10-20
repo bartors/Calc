@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bartosz/IdeaProjects/Calc/conf/routes
-// @DATE:Sat Oct 20 11:12:22 CEST 2018
+// @DATE:Sat Oct 20 18:04:43 CEST 2018
 
 import play.api.mvc.Call
 
@@ -77,16 +77,40 @@ package controllers {
     }
 
   
+    // @LINE:23
+    def result(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "result")
+    }
+  
     // @LINE:18
     def calculator(s:String): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "calculator/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("s", s)))
     }
   
+    // @LINE:21
+    def operation(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "operation")
+    }
+  
+    // @LINE:25
+    def reset(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "reset")
+    }
+  
     // @LINE:16
     def index(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "calculator")
+    }
+  
+    // @LINE:27
+    def clear(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "clear")
     }
   
   }
