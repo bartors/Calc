@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-
+import play.api.libs.json.Json
 import play.api.mvc._
 import services.Calc
 
@@ -19,19 +19,19 @@ class CalculatorController @Inject()(cc: ControllerComponents, calc : Calc) (imp
     Ok(views.html.calc("Calculator bitch"))
   }
   def calculator(s:String)= Action{
-    Ok(calc.run(s).toString)
+    Ok(Json.toJson(calc.run(s)))
   }
   def operation()=Action{
-    Ok(calc.getOperation())
+    Ok(Json.toJson(calc.getOperation()))
   }
   def result()=Action{
-    Ok(calc.getResult())
+    Ok(Json.toJson(calc.getResult()))
   }
   def reset()=Action{
-    Ok(calc.reset())
+    Ok(Json.toJson(calc.reset()))
   }
   def clear()=Action{
-    Ok(calc.clearMemory())
+    Ok(Json.toJson(calc.clearMemory()))
   }
 
 }

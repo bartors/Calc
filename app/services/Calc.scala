@@ -21,11 +21,15 @@ class Calc {
   var calc=0
 
 
-  def run(s:String):Double= {
+  def run(s:String):String= {
     operations+= s
-    val res =compute(shaunting(tokenize(lexemize(s))))
-    results += res.toString
-    return res
+    try {
+      val res = compute(shaunting(tokenize(lexemize(s))))
+      results += res.toString
+    }catch{
+      case e:Exception =>  return e.getMessage
+    }
+    return res.toString
 
   }
   def getOperation(): String = {
@@ -151,7 +155,7 @@ class Calc {
      x match {
        case "*" => array+=Operator('*',3)
        case ":" => array+=Operator('/',3)
-       case "/" => array+=Operator('/',3)
+       case "/" => array+=Operator(':',3)
        case "-" => array+=Operator('-',2)
        case "+" => array+=Operator('+',2)
        case "(" => array+=Operator('l',0)
