@@ -16,7 +16,7 @@ class CalculatorController @Inject()(cc: ControllerComponents, calc : Calc) (imp
     * a path of `/`.
     */
   def index = Action {
-    Ok(views.html.calc("Calculator bitch"))
+    Ok(views.html.calc("Calculator"))
   }
   def calculator(s:String)= Action{
     Ok(Json.toJson(calc.run(s)))
